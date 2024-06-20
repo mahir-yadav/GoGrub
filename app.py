@@ -5,12 +5,19 @@ from random import randint
 from markupsafe import escape
 import mysql.connector
 
-mydb = mysql.connector.connect(
-    host="localhost", user="root", passwd="mahir@2004", database="gogrubDB")
+# mydb = mysql.connector.connect(
+#     host="localhost", user="root", passwd="mahir@2004", database="gogrubDB")
 app = Flask(__name__)
-cursor = mydb.cursor()
-app.permanent_session_lifetime = timedelta(days=3)
 app.secret_key = "mahir"
+app.secret_key = os.getenv("SECRET_KEY")
+
+mydb = mysql.connector.connect(
+    host=os.getenv("DATABASE_HOST"),
+    user=os.getenv("DATABASE_USER"),
+    passwd=os.getenv("DATABASE_PASSWORD"),
+    database=os.getenv("DATABASE_NAME")
+)
+cursor = mydb.cursor()
 
 admin_name = "9000000000"
 admin_password = "gogrub"
