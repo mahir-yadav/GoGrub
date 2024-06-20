@@ -1,0 +1,173 @@
+{% extends "customerNavbar.html" %}
+{% block title %}
+GoGrub
+{% endblock %}
+{% block content %}
+
+<style>
+    .jumbotron {
+      background-color: #f8f9fa;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      margin-bottom: 2rem;
+  }
+
+  .jumbotron h1 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: #333;
+  }
+
+  .jumbotron p {
+      font-size: 1.2rem;
+      color: #666;
+  }
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+    .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    .btn-primary, .btn-success, .btn-secondary {
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    .form-control {
+        margin-top: 1rem;
+    }
+    h1, h2 {
+        color: #00b1ff;
+    }
+    h2 {
+        text-align: center;
+        text-decoration: underline;
+        margin-top: 1rem;
+    }
+    .payment-method {
+        text-align: center;
+        margin-top: 2rem;
+    }
+    .payment-method input[type=radio] {
+        margin-right: 5px;
+    }
+    .payment-method label {
+        margin-right: 15px;
+    }
+    button[type=submit] {
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+    button[type=submit]:hover {
+        background-color: #0056b3;
+    }
+    .payment-method {
+      text-align: left;
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .payment-option {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+  }
+  .payment-option input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      border: 2px solid #007bff;
+      margin-right: 10px;
+      position: relative;
+  }
+  .payment-option input[type="radio"]:after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #007bff;
+      opacity: 0;
+      transition: opacity 0.2s;
+  }
+  .payment-option input[type="radio"]:checked:after {
+      opacity: 1;
+  }
+  .payment-option label {
+      cursor: pointer;
+  }
+</style>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row m-0 p-2 pt-3">
+            <div class="col-md-6 col-12 m-auto">
+                <img src="{{url_for('static', filename='restaurant.png')}}" width="80%" >
+            </div>
+            <div class="col-md-6 col-12 m-auto">
+                <h1>Welcome to {{x[0][6]}}!!</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<h2>Food For You</h2>
+<div class="row m-0 p-4 mt-4">
+{% for i in x %}
+<div class="col-md-4 col-12  p-3">
+    <div class="card mb-3 h-100 m-auto">
+        <div class="card-body">
+            <h5 class="card-title">{{i[1]}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Food id: {{i[0]}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Stock available: {{i[3]}}</h6>
+            <button type="button" class="btn btn-primary">Price: {{i[2]}}</button>
+            {% if i[4] == 1 %}
+            <button type="button" class="btn btn-secondary" style="background-color:#5cb85c;">Veg</button>
+            {% else %}
+            <button type="button" class="btn btn-secondary" style="background-color:#d9534f;">Non-Veg</button>
+            {% endif %}
+            <form action="/customer/add_to_order" method="post">
+              <input type="hidden" name="food_id" value="{{i[0]}}">
+              <input type="hidden" name="food_name" value="{{i[1]}}">
+              <input type="hidden" name="food_price" value="{{i[2]}}">
+              <input type="hidden" name="res_id" value="{{i[5]}}">
+              <input type="number" name="quantity" min="1" max="{{i[3]}}" value="1" class="form-control">
+              <button type="submit" class="btn btn-success mt-2">Add to Order</button>
+          </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+<form action="{{ url_for('place_order') }}" method="post" style="max-width: 600px; margin: auto;">
+  <div class="payment-method">
+      <p>Choose a payment method:</p>
+      <div class="payment-option">
+          <input type="radio" id="credit_card" name="payment_method" value="Credit Card" required>
+          <label for="credit_card">Credit Card</label>
+      </div>
+      <div class="payment-option">
+          <input type="radio" id="debit_card" name="payment_method" value="Debit Card">
+          <label for="debit_card">Debit Card</label>
+      </div>
+      <div class="payment-option">
+          <input type="radio" id="paypal" name="payment_method" value="Paytm">
+          <label for="paypal">Paytm</label>
+      </div>
+  </div>
+  <button type="submit">Place Order</button>
+</form>
+{% endblock %}

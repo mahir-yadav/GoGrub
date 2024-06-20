@@ -1,0 +1,76 @@
+{% extends "restaurantNavbar.html" %}
+{% block title %}
+Profile
+{% endblock %}
+{% block content %}
+<style>
+    .profile-card {
+        max-width: 70%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+        border-radius: 8px;
+        overflow: hidden;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #ffffff;
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-header img {
+        border-radius: 50%;
+        margin-right: 15px;
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+    }
+
+    .profile-header h2 {
+        margin: 0;
+        color: #0dadf1;
+        font-size: 1.75rem;
+    }
+
+    .profile-info {
+        color: #333;
+    }
+
+    .profile-info h3 {
+        color: #0dadf1;
+        text-decoration: underline;
+        margin-top: 20px;
+    }
+
+    .profile-info p {
+        margin: 5px 0;
+        font-size: 1rem;
+    }
+
+    .profile-info span {
+        font-weight: bold;
+    }
+</style>
+
+<div class="profile-card">
+    <div class="profile-header">
+        {% for i in x %}
+        <img src="https://picsum.photos/60" alt="Profile Picture">
+        <h2>{{i[1]}}</h2>
+    </div>
+    <div class="profile-info">
+        <p><span>Restaurant:</span> Delightful Dining</p>
+        <hr>
+        <h3>Details</h3>
+        <p><span>Name:</span> {{i[1]}}</p>
+        <p><span>Description:</span> {{i[6]}}</p>
+        <p><span>Phone:</span> {{i[2]}}</p>
+        <hr>
+        <h3>Address</h3>
+        <p>{{i[3]}}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "restaurantNavbar.html" %}
+
+{% block title %}Add Food{% endblock %}
+
+{% block content %}
+<style>
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    h2 {
+        text-align: center;
+        color: #0dadf1;
+        margin-bottom: 30px;
+    }
+
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+        color: #333;
+    }
+
+    .form-control, .form-select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        display: block;
+        width: 100%;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="container">
+    <h2>Add Food</h2>
+    <form action="/restaurant/add_food" method="POST">
+        <div class="mb-3">
+            <label for="foodName" class="form-label">Food Name</label>
+            <input type="text" class="form-control" id="foodName" name="foodName" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="foodPrice" class="form-label">Price</label>
+            <input type="number" step="0.01" class="form-control" id="foodPrice" name="foodPrice" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="foodIsVeg" class="form-label">Is Vegetarian</label>
+            <select class="form-select" id="foodIsVeg" name="foodIsVeg">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="foodstock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="foodstock" name="foodstock" required>
+        </div>
+        
+        <!-- Add any other fields you need -->
+        <button type="submit" class="btn btn-primary">Add Food</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .jumbotron {
+            background-color: #ffffff;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+            border-radius: 0.5rem;
+        }
+        .jumbotron .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .jumbotron .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .display-4 {
+            font-weight: 600;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Thank You!</h1>
+            <p class="lead">Your order has been placed successfully.</p>
+            <hr class="my-4">
+            <p>Your Order ID is: <strong>{{ order_id }}</strong></p>
+            <p>Total Amount to be Paid is: <strong>{{ amount }}</strong></p>
+
+            <p class="lead">
+                <a href="/customer" class="btn btn-primary btn-lg" role="button">Continue Browsing</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

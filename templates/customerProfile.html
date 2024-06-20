@@ -1,0 +1,63 @@
+{% extends "customerNavbar.html" %}
+{% block title %}
+Profile
+{% endblock %}
+{% block content %}
+<style>
+    .profile-card {
+        width: 70%;
+        margin: auto;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+        border-radius: 15px;
+        background: #ffffff;
+    }
+    .profile-header {
+        color: #00b1ff;
+        display: flex;
+        align-items: center;
+    }
+    .profile-header img {
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+    .profile-category {
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1.1rem;
+        color: #0dadf1;
+    }
+    .contact-details h3, .address-details h3 {
+        text-decoration: underline;
+    }
+    .contact-details p, .address-details p {
+        margin: 0;
+        font-size: 1rem;
+    }
+</style>
+
+<div class="card profile-card">
+    <div class="bd-cheatsheet container-fluid bg-body">
+        {% for i in x %}
+        <div class="profile-header">
+            <img src="https://picsum.photos/60" alt="Profile Picture">
+            <h2>{{i[1]}}</h2>
+        </div>
+        <p class="profile-category">customer</p>
+        <hr>
+        <div class="contact-details">
+            <h3>Contact Details</h3>
+            <p><span>Phone:</span> {{i[2]}}</p>
+        </div>
+        <hr>
+        <div class="address-details">
+            <h3>Address:</h3>
+            <p>{{i[3]}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

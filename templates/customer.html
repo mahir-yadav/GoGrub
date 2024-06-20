@@ -1,0 +1,86 @@
+{% extends "customerNavbar.html" %}
+{% block title %}
+customer
+{% endblock %}
+{% block content %}
+<style>
+    .jumbotron {
+        background-color: #f8f9fa;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .jumbotron h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .jumbotron p {
+        font-size: 1.2rem;
+        color: #666;
+    }
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+    }
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    .card-body button {
+        margin-top: 15px;
+    }
+    .star-rating {
+        color: #ffc107;
+    }
+    .restaurant-header {
+        text-align: center;
+        color: #0dadf1;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+</style>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row m-0 p-2 pt-3 align-items-center">
+            <div class="col-md-6 col-12 text-center">
+                <img src="{{url_for('static', filename='customer.png')}}" class="img-fluid" alt="Customer Image" style="max-width: 80%;">
+            </div>
+            <div class="col-md-6 col-12">
+                <h1 class="display-4" style="color:#00b1ff">Welcome {{y[0][1]}}!!</h1>
+                <p class="lead" style="font-size: 1.2rem;">
+                    One cannot think well, love well, sleep well, if one has not dined well.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="restaurant-header">Restaurants near you</h2>
+
+<div class="row m-0 p-4">
+{% for i in x %}
+    <div class="col-md-4 col-12 p-3">
+        <div class="card mb-3 h-100 m-auto">
+            <div class="card-body">
+                <h5 class="card-title">{{i[1]}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{i[2]}}</h6>
+                <p class="card-text">{{i[3]}}</p>
+                <button type="button" class="btn btn-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill star-rating" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg> {{i[6]}}
+                </button>
+                <form action="/customer/food" method="post" style="margin-top: 10px;">
+                    <input type="hidden" name="itemId" value="{{i[0]}}">
+                    <button type="submit" class="btn btn-primary">View Food Items</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

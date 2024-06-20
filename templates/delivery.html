@@ -1,0 +1,103 @@
+{% extends "deliveryNavbar.html" %}
+{% block title %}
+Orders
+{% endblock %}
+{% block content %}
+<style>
+    .jumbotron {
+        background-color: #f8f9fa;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .jumbotron h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .jumbotron p {
+        font-size: 1.2rem;
+        color: #666;
+    }
+
+    .container h1, .container p {
+        text-align: center;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+        border: none;
+        border-radius: 8px;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title {
+        color: #0dadf1;
+    }
+
+    .card-text {
+        color: #555;
+    }
+
+    .btn-success {
+        width: 100%;
+        border-radius: 0 0 8px 8px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #00b1ff;
+        margin-bottom: 30px;
+    }
+
+    .badge {
+        background-color: #007bff;
+    }
+</style>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row m-0 p-2 pt-3">
+            <div class="col-md-6 col-12 m-auto">
+                <img src="{{url_for('static', filename='delivery.png')}}" width="55%" >
+            </div>
+            <div class="col-md-6 col-12 m-auto">
+                <h1 style="color: #0dadf1;">Welcome {{z[0][0]}}!!</h1>
+                <p>
+                    If you always put the customer first, success will be yours.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 style="text-align: center;color:#0dadf1; margin-top: 40px;" class="mt-3">View Active Orders</h2>
+
+<div class="row m-0 p-4 mt-2">
+{% for i in x %}
+<div class="col-md-4 col-12 p-3">
+    <div class="card h-100 m-auto mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Customer Name: <span class="badge">{{i[7]}}</span></h5>
+            <p class="card-text m-0"><strong>Pick Up:</strong> {{i[2]}}</p>
+            <p class="card-text m-0"><strong>Drop:</strong> {{i[4]}}</p>
+            <p class="card-text"><strong>Payment Mode:</strong> {{i[5]}}</p>
+            <p><strong>Bill Amount:</strong> ₹{{i[6]}}</p>
+            <form action="/mark-delivered" method="post">
+                <input type="hidden" name="order_id" value="{{i[0]}}">
+                <button type="submit" class="btn btn-success">Click if you delivered</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "deliveryNavbar.html" %}
+{% block title %}
+Profile
+{% endblock %}
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="card m-auto shadow-lg" style="width: 85%; border-radius: 15px;">
+        <div class="card-body">
+            {% for i in x %}
+            <div class="d-flex align-items-center mb-4">
+                <img src="https://picsum.photos/60" style="border-radius: 50%;" class="me-3">
+                <h2 class="mb-0" style="color: #0dadf1">{{i[1]}}</h2>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="mb-2" style="color: #6c757d;">Details</h4>
+                <p class="mb-1"><strong>Salary:</strong> ₹{{i[5]}}</p>
+                <p class="mb-1"><strong>Phone:</strong> {{i[2]}}</p>
+                <p><strong>Address:</strong> {{i[4]}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

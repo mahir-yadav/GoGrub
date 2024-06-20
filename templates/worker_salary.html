@@ -1,0 +1,61 @@
+{% extends "adminnavbar.html" %}
+{% block title %}
+worker salary
+{% endblock %}
+{% block content %}
+<style>
+    .row {
+        margin: 0;
+        padding: 2rem;
+        margin-top: 1rem;
+    }
+    .card {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card-body {
+        position: relative;
+        padding: 1.5rem;
+    }
+    .btn-success {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .form-control {
+        margin-top: 0.5rem;
+    }
+    .badge {
+        font-size: 100%;
+    }
+    h5 {
+        color: #007bff;
+        margin-bottom: 1rem;
+    }
+    .card-title span {
+        background-color: #007bff;
+    }
+</style>
+<div class="row">
+    {% for i in x %}
+    <div class="col-md-4 col-12 p-3">
+        <div class="card h-100 m-auto mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Worker Name: <span class="badge bg-primary">{{i[1]}}</span></h5>   
+                <p class="card-text m-0"><strong>Phone No.:</strong> {{i[2]}}</p>
+                <p class="card-text m-0"><strong>Address:</strong> {{i[4]}}</p>
+                <p class="card-text m-0"><strong>Current Salary:</strong> {{i[5]}}</p>
+                <form action="/update_salary" method="post">
+                    <input type="number" name="new_salary" placeholder="Enter new salary" required class="form-control mb-2">
+                    <input type="hidden" name="worker_id" value="{{i[0]}}">
+                    <button type="submit" class="btn btn-success">Update Salary</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

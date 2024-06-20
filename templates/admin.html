@@ -1,0 +1,78 @@
+{% extends "adminnavbar.html" %}
+{% block title %}
+admin
+{% endblock %}
+{% block content %}
+<style>
+    .jumbotron {
+        background-color: #f8f9fa;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .jumbotron h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .jumbotron p {
+        font-size: 1.2rem;
+        color: #666;
+    }
+    .container > h2 {
+        color: #0dadf1;
+        text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 2rem;
+    }
+    .card-body {
+        position: relative;
+    }
+    .btn-success {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+    }
+    .card-title {
+        color: #00b1ff;
+    }
+</style>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container" >
+        <div class="row m-0 p-2 pt-3">
+            <div class="col-md-6 col-12 m-auto">
+                <img src="{{url_for('static', filename='management.png')}}" width="55%">
+            </div>
+            <div class="col-md-6 col-12 m-auto">
+                <h1 style="color:#00b1ff">Welcome Admin!!</h1>
+                <p style="font-size: 19px;">Manage everything Sir.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <h2 style="color: red;">Pending Access Requests</h2>
+    {% for restaurant in x %}
+    <div class="card my-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ restaurant[1] }}</h5>
+            <p class="card-text">{{ restaurant[6] }}</p>
+            <p class="card-text"><strong>Phone No.:</strong> {{ restaurant[2] }}</p>
+            <p class="card-text"><strong>Address:</strong> {{ restaurant[3] }}</p>
+            <form action="/give-access" method="post">
+                <input type="hidden" name="res_id" value="{{restaurant[0]}}">
+                <button type="submit" class="btn btn-success">Grant Access</button>
+            </form>  
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "customerNavbar.html" %}
+{% block title %}
+Orders
+{% endblock %}
+{% block content %}
+<style>
+    .jumbotron {
+        background-color: #f8f9fa;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .jumbotron h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .jumbotron p {
+        font-size: 1.2rem;
+        color: #666;
+    }
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border: none;
+    }
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    .card-body button {
+        margin-top: 15px;
+    }
+    .orders-header {
+        color: #0dadf1;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+    .badge {
+        margin-left: 10px;
+    }
+</style>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row m-0 p-2 pt-3 align-items-center">
+            <div class="col-md-6 col-12 text-center">
+                <img src="{{url_for('static', filename='customer.png')}}" class="img-fluid" alt="Customer Image" style="max-width: 80%;">
+            </div>
+            <div class="col-md-6 col-12">
+                <h1 class="display-4" style="color:#00b1ff">Welcome {{y[0][1]}}!!</h1>
+                <p class="lead" style="font-size: 1.2rem;">
+                    One cannot think well, love well, sleep well, if one has not dined well.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="orders-header">Your orders</h2>
+    <div class="row m-0">
+    {% for i in x %}
+        <div class="col-md-4 col-12 p-2">
+            <div class="card h-100 m-auto">
+                <div class="card-body">
+                    <h5 class="card-title">{{i[9]}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{i[0]}} <span class="badge bg-success">{{i[1]}}</span></h6>
+                    <p class="card-text">Bill Amount: {{i[4]}}</p>
+                    <p class="card-text">Paid Via: {{i[3]}}</p>
+                    <a href="#" class="btn btn-outline-primary">View Summary</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

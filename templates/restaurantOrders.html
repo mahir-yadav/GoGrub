@@ -1,0 +1,103 @@
+{% extends "restaurantNavbar.html" %}
+{% block title %}Orders{% endblock %}
+{% block content %}
+<style>
+    .jumbotron {
+        background-color: #f8f9fa;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .jumbotron h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .jumbotron p {
+        font-size: 1.2rem;
+        color: #666;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+        border-radius: 0.5rem; /* Match border-radius with the jumbotron */
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-outline-primary {
+        border-color: #007bff;
+        color: #007bff;
+    }
+
+    .btn-outline-primary:hover {
+        background: #007bff;
+        color: #ffffff;
+    }
+
+    h2 {
+        color: #0dadf1;
+        text-align: center;
+        margin-top: 2rem;
+        font-weight: 500;
+    }
+
+    .veg-btn {
+        background-color: #5cb85c; /* Green for vegetarian */
+        color: white; /* White text */
+        border-color: #4cae4c; /* Slightly darker green border for some depth */
+    }
+
+    .non-veg-btn {
+        background-color: #d9534f; /* Red for non-vegetarian */
+        color: white; /* White text */
+        border-color: #d43f3a; /* Slightly darker red border for some depth */
+    }
+</style>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row m-0 p-2 pt-3">
+            <div class="col-md-6 col-12 m-auto">
+                <img src="{{url_for('static', filename='restaurant.png')}}" alt="Restaurant Logo" width="65%">
+            </div>
+            <div class="col-md-6 col-12 m-auto">
+                <h1 style="color: #0dadf1;">Welcome {{y[0][0]}}!!</h1>
+                <p>Always greet guests with a smile; it sets the tone for a memorable dining experience.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2>Active Orders</h2>
+
+<div class="container">
+    <div class="row m-0 p-4 mt-2">
+        {% for i in x[:-1] %}
+        <div class="col-md-4 col-12 p-3">
+            <div class="card mb-3 h-100 m-auto">
+                <div class="card-body">
+                    <h5 class="card-title">{{i[0]}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Quantity: {{i[6]}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Order placed at: {{i[3]}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Delivery Worker: {{i[8]}}</h6>
+                    <button type="button" class="btn btn-outline-primary mb-2">Customer: {{i[7]}}</button>
+                    {% if i[1] == 1 %}
+                    <button type="button" class="btn veg-btn">Veg</button>
+                    {% else %}
+                    <button type="button" class="btn non-veg-btn">Non-Veg</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

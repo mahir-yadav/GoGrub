@@ -1,0 +1,45 @@
+.background-image {
+    background-image: url('your-food-image-path.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    opacity: 0.9;
+}
+
+.overlay {
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Custom card styling */
+.custom-card {
+    background-color: #fff;
+    /* Light background color for the card */
+    border-radius: 8px;
+    /* Rounded corners */
+    border: none;
+    /* Removes the default border */
+}
+
+.card-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Shadow effect */
+    transition: box-shadow 0.3s ease-in-out;
+    /* Smooth transition for hover effect */
+}
+
+.card-shadow:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Enhanced shadow on hover */
+}
+
+/* Customizing the card title color */
+.card-title {
+    color: #333;
+    /* Darker text color for better readability */
+}
