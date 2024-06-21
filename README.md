@@ -30,7 +30,7 @@ For knowing more go to **GoGrubReport.pdf**
  ```
 
 ## Screenshots of the Application
-**Login Page**
+
 <h2 style="font-weight:bold;">Login Page</h2>
 <p align ="center">
     <img src="Screenshots/img1.png" width="95%">
