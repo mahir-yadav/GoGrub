@@ -31,38 +31,47 @@ For knowing more go to **GoGrubReport.pdf**
 
 ## Screenshots of the Application
 **Login Page**
+<h2 style="font-weight:bold;">Login Page</h2>
 <p align ="center">
     <img src="Screenshots/img1.png" width="95%">
 </p>
-**Admin Home Page**
+<h2 style="font-weight:bold;">Admin Home Page</h2>
 <p align ="center">
     <img src="Screenshots/img2.png" width="95%">
 </p>
-**Admin can update salary of workers**
+<h2 style="font-weight:bold;">Admin can update salary of workers</h2>
 <p align ="center">
     <img src="Screenshots/img3.png" width="95%">
 </p>
-**Customer Home Page**
+<h2 style="font-weight:bold;">Customer Home Page</h2>
+
 <p align ="center">
     <img src="Screenshots/img4.png" width="95%">
 </p>
-**Customer orders Page**
+
+<h2 style="font-weight:bold;">Customer orders Page</h2>
+
 <p align ="center">
     <img src="Screenshots/img5.png" width="95%">
 </p>
-**Restaurant Home Page and update stock**
+
+<h2 style="font-weight:bold;">Restaurant Home Page and update stock</h2>
+
 <p align ="center">
     <img src="Screenshots/img6.png" width="95%">
 </p>
-**Restaurant can see active orders**
+<h2 style="font-weight:bold;">Restaurant can see active orders</h2>
+
 <p align ="center">
     <img src="Screenshots/img7.png" width="95%">
 </p>
-**Restaurant can add food too**
+
+<h2 style="font-weight:bold;">Restaurant can add food too</h2>
+
 <p align ="center">
     <img src="Screenshots/img8.png" width="95%">
 </p>
-**Delivery Worker home page can see his/her active orders and click "if delivered" if they delivered order.**
+<h2 style="font-weight:bold;">Delivery Worker home page can see his/her active orders and click "if delivered" if they delivered order.</h2>
 <p align ="center">
     <img src="Screenshots/img9.png" width="95%">
 </p>
