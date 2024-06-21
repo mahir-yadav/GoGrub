@@ -4,6 +4,7 @@
 GoGrub is a fast, reliable, and convenient way to deliver your favourite meals to your doorstep. It is an online food ordering platform that helps restaurants list food items and allows customers to browse and purchase them.
 
 This project is part of the Database Management System course at IIIT-Delhi. **Mysql** has been used for storage, **flask** for the backend, and **HTML** and **CSS** have been used for the front end.
+For knowing more go to **GoGrubReport.pdf**
 
 ## Setup
 
