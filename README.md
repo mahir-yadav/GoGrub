@@ -1,4 +1,4 @@
-# Quick Serve
+# GoGrub
 
 ## About the Project
 GoGrub is a fast, reliable, and convenient way to deliver your favourite meals to your doorstep. It is an online food ordering platform that helps restaurants list food items and allows customers to browse and purchase them.
