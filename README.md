@@ -23,7 +23,7 @@ This project is part of the Database Management System course at IIIT-Delhi. **M
 
 - Open your **Terminal / Cmd**
  ```
- cd QuickServe
+ cd GoGrub
  pip install -r requirements.txt
  python app.py 
  ```
